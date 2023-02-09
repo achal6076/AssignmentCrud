@@ -1,0 +1,89 @@
+#registration-table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  #registration-table td,
+  #registration-table th {
+    border: 1px solid rgb(6, 6, 6);
+    padding: 8px;
+  }
+  
+  #registration-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  #registration-table tr:hover {
+    background-color: #ddd;
+  }
+  
+  #registration-table th {
+    padding-top: 5px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #0e9393;
+    color: white;
+  }
+  
+  .registrationcounter {
+    font-size: 20px;
+    font-weight: 500;
+  }
+  
+  #registration-form{
+    width: 500px;
+    /* margin: auto; */
+    margin-left: 1in;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  #signinform {
+    width: 500px;
+    /* margin: auto; */
+    /* margin-right: 25px; */
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: -16cm;
+    margin-left: 10in;
+  }
+  
+  label {
+    font-weight: bold;
+    margin-top: 5px;
+  }
+  input[type="text"],
+  input[type="email"],
+  input[type="number"],
+  input[type="password"] {
+    width: 100%;
+    padding: 5px;
+    margin-top: 5px;
+    border-radius: 5px;
+  }
+  #button,#signinbutton,#registerbutton {
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 5px;
+    background-color: #0e9393;
+    color: white;
+    cursor: pointer;
+    /* position: absolute; */
+  }
+  
+  .counter {
+    font-weight: bold;
+    font-size: 35px;
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  #homepagebuttons,
+  #homebutton {
+    text-align: center;
+  }
+  
+  /* registerpageButton start here */
+  
+  
