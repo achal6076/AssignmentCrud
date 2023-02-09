@@ -146,7 +146,7 @@ function hideSignIn() {
 function dataShow() {
   $(document).ready(function () {
     $.ajax({
-      url: "http://localhost:5001/show",
+      url: "http://localhost:5003/show",
       type: "GET",
       success: function (result) {
         console.log(result);
@@ -158,11 +158,12 @@ function dataShow() {
   });
 }
 
+
 function insert(user) {
   console.log("function insert start"),
     $(document).ready(function () {
       $.ajax({
-        url: "http://localhost:5001/insert",
+        url: "http://localhost:5003/insert",
         type: "POST",
         //   Headers: {
         //     Accept: "application.json",

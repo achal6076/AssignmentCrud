@@ -81,6 +81,9 @@
       <tbody id="display"></tbody>
     </table>
 
+
+    
+
     
     <br />
 
@@ -115,5 +118,22 @@
     <button onclick="dataShow()">show data</button>
 
     <script src="/script.js"></script>
+
+    <script>
+      function dataShow() {
+  $(document).ready(function () {
+    $.ajax({
+      url: "http://localhost:5003/show",
+      type: "GET",
+      success: function (result) {
+        console.log(result);
+      },
+      error: function (error) {
+        console.log(error);
+      },
+    });
+  });
+}
+    </script>
   </body>
 </html>

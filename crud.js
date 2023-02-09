@@ -1,32 +1,32 @@
 const { json } = require('body-parser');
-const mysql = require('mysql2')
+    const mysql = require('mysql2')
 
-const connection = mysql.createConnection({
-    host:'localhost',
-    user:'root',
-    password:'root',
-    database:'crud'
-});
+    const connection = mysql.createConnection({
+        host:'localhost',
+        user:'root',
+        password:'root',
+        database:'crud'
+    });
 
 
 
-connection.query(
-    'select * from `userdetails` ',
-    function(err,result,fields){
-        if(err){
-            throw err;
+    connection.query(
+        'select * from `userdetails` ',
+        function(err,result,fields){
+            if(err){
+                throw err;
+            }
+            console.log(result);
+            console.log("connected to server");
         }
-        console.log(result);
-        console.log("connected to server");
-    }
-);
+    );
 
 
 
 
 const express = require('express');
 const app = express();
-const port = 5001;
+const port = 5003;
 
 
 
@@ -80,6 +80,7 @@ app.get('/show',(req,resp) =>{
     )
 
 });
+
 
 // show data by given id
 
