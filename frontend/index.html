@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../frontend/css/style.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
@@ -22,16 +22,26 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
   </head>
   <body>
-    <div id="homepagebuttons">
-      <!-- <a type="button" id="regiterPage" >
-        <button id="registerbutton">Register Here</button>
-    </a> -->
+
+
+    <div class="topnav">
+      <a href="#"><button id="signinbutton" type="submit" onclick="dataShow()">data show</button></a>
+      <a href="#"><button id="signinbutton" onclick="hideSignIn()">signin Here</button></a>
+      
+    </div>
+
+     
+
+
+    <!-- <div id="homepagebuttons">
+
+    
 
       <a type="button" id="signin">
         <button id="signinbutton" onclick="hideSignIn()">signin Here</button>
       </a>
-    </div>
-
+    </div> -->
+    
     <div id="regform">
       <form id="registration-form" method="post">
         <h1 style="text-align: center">Register here !</h1>
@@ -63,6 +73,7 @@
       </form>
     </div>
 
+    
 
 
     <table id="registration-table">
@@ -88,12 +99,12 @@
     <br />
 
     <div id="counter" class="counter"></div>
-    <a type="button" id="signin" href="homepage.html">
+    <!-- <a type="button" id="signin" href="homepage.html">
       <button id="signinbutton">Home</button>
     </a>
     <a type="button" id="signin" href="signin.html">
       <button id="signinbutton" onclick="hideRegister()">signin Here</button>
-    </a>
+    </a> -->
 
     <!-- signIn form -->
 
@@ -113,27 +124,43 @@
       </form>
     </div>
 
+    <!-- <div class="deleteForm">
+      <div id="deleteform">
+        <form id="registration-form" method="post">
+          <h1 style="text-align: center">Delete User !</h1>
+          
+          <label for="age">Enter user Id:</label>
+          <input type="number" id="id" name="id" />
+          <br />
+           <button id="button" type="button" onclick="userDelete()">
+            Delete
+          </button>
+        </form>
+      </div>
+
+    </div> -->
+    
+    <div id="delete_user" >
+      <form id="">
+          <h1>Delete User</h1><br><br>
+          <input type="text" id="deleteUserId" placeholder="User Id" name="deleteUserId">
+          <input type="submit" id="delete-btn" onclick="deleteApi()" value="Delete">
+      </form>
+  </div>
+
     <!-- data show button -->
 
-    <button onclick="dataShow()">show data</button>
+    
+    <!-- <button type="submit" id="showdata">data show</button> -->
+    <!-- <button type="submit" onclick="dataShow()">data show</button> -->
+    <!-- <button type="submit" onclick="dataShow()">data show</button> -->
+    <!-- <script src="/script.js"></script> -->
 
-    <script src="/script.js"></script>
 
-    <script>
-      function dataShow() {
-  $(document).ready(function () {
-    $.ajax({
-      url: "http://localhost:5003/show",
-      type: "GET",
-      success: function (result) {
-        console.log(result);
-      },
-      error: function (error) {
-        console.log(error);
-      },
-    });
-  });
-}
-    </script>
+   
+
+    <script src="./script.js"></script>
+    
+    
   </body>
 </html>
