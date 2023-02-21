@@ -30,10 +30,11 @@
     font-weight: 500;
   }
   
-  #registration-form{
+  #registrationform{
     width: 500px;
-    /* margin: auto; */
-    margin-left: 1in;
+    margin: auto;
+    
+    /* margin-left: 1in; */
     padding: 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -41,23 +42,25 @@
   #signinform{
     width: 500px;
     /* margin: auto; */
+    margin: 125px 50px 75px 100px;
     /* margin-right: 25px; */
     padding: 15px;
-    border: 1px solid #fff6f6;
+    border: 2px solid #cb1717;
     border-radius: 5px;
-    margin-top: -19cm;
-    margin-left: 10in;
+    /* margin-top: -19cm; */
+    /* margin-left: 10in; */
   }
 
   #delete_user{
     width: 500px;
-    /* margin: auto; */
+    margin: auto;
+    padding: auto;
     /* margin-right: 25px; */
-    padding: 15px;
+    /* padding: 15px; */
     border: 1px solid #fff6f6;
     border-radius: 5px;
-    margin-top: -19cm;
-    margin-left: 10in;
+    /* margin-top: -19cm; */
+    /* margin-left: 10in; */
   }
   
   label {
@@ -95,7 +98,6 @@
     text-align: center;
   }
   
-  /* registerpageButton start here */
   
   
 

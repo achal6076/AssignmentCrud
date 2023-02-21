@@ -15,18 +15,21 @@ function getAllData(abc, callback) {
   });
 }
 
+
+
+
+
 function insertUser(abc) {
   return connection.query(abc, function (err, result, fields) {
+    console.log("userDbreached...");
     console.log(result);
   });
-  console.log("interted...");
+  // console.log(user);
 }
 
-// function deleteUser(abc){
-//     return connection.query(abc, function(err,result,fields){
-//         console.log(result);
-//     })
-// }
+
+
+
 
 const deleteData = (sqlQuery)=>{
   return connection.query(
@@ -42,6 +45,11 @@ const deleteData = (sqlQuery)=>{
   })
 }
 
+
+
+
+
+
 const updateData = (sqlQuery)=>{
   return connection.query(
       sqlQuery,
@@ -56,4 +64,22 @@ const updateData = (sqlQuery)=>{
   })
 }
 
-module.exports = { getAllData, insertUser, deleteData, updateData };
+const signIn = async (sqlQuery)=>{
+  return new Promise((resolve, reject)=>{
+      connection.query(sqlQuery, (err, res)=>{
+          if(err){
+            console.log("error...")
+              return reject(err);
+          }
+          //console.log(res);
+          console.log("logged in")
+          resolve(res);
+      })
+  })
+}
+
+
+
+
+
+module.exports = { getAllData, insertUser, deleteData, updateData, signIn };

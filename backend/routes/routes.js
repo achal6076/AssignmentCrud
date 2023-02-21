@@ -3,16 +3,13 @@ const express = require("express");
 const router = express.Router();
 const {connection} = require("../connection/Database");
 var bodyParser = require("body-parser");
-
+const register = require("../validation/validation");
 const {controlDeleteData,controlUpdateData} = require('../controller/usercontroller');
 
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({extended:true}));
 
 
-// const connection = require("../../crud");
-
-//get api
 
 
 router.get('/show',userController.getAllData);
@@ -20,12 +17,11 @@ router.get('/show',userController.getAllData);
 
 router.post('/insert',userController.insertUser);
 
-// router.post('/insert',userController.g)
-
-// router.post('/delete/(:id)',userController.deleteUser);
 router.post('/deleteuser',controlDeleteData);
 
-router.post('/updateuser',controlUpdateData);
+// router.post('/login',controlUpdateData);
+router.post("/signIn", userController.signIn);
+// router.get('/fetchuser', controlFetchData);
 // router.get('/show',(req,resp) =>{
 //     connection.query(
 //         'select * from userdetails',

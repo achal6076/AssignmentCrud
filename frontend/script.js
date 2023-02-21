@@ -11,9 +11,9 @@ function storeAndShowuserData() {
   let age = document.getElementById("age").value;
   let contact = document.getElementById("contact").value;
   let password = document.getElementById("password").value;
-  console.log("firstname lengthis "+fName.length);
-  console.log("lastname lengthis "+lName.length);
-  console.log("username lengthis "+username.length);
+  console.log("firstname lengthis " + fName.length);
+  console.log("lastname lengthis " + lName.length);
+  console.log("username lengthis " + username.length);
 
   function User(fName, lName, username, email, age, contact, password) {
     // this.userId = userId;
@@ -28,32 +28,32 @@ function storeAndShowuserData() {
   const user = new User(fName, lName, username, email, age, contact, password);
   console.log(user);
   //   regex validataion start here
-
-  var regEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/g;
+  var nameRegex = /^[a-zA-Z ]{2,30}$/;
+  var regEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
   var regPhone = /^\d{10}$/;
 
-  if (fName.length < 4) {
-    alert("First Name should be greated than 5 charcter");
-
-    // return false;
-  } else if (lName.length < 4) {
-    alert("Last Name should be greated than 5 charcter");
+  if (!nameRegex.test(fName)) {
+    alert("Please Enter valid First Name.");
 
     return false;
-  } else if (username.length < 5) {
-    alert("Last Name should be greated than 5 charcter");
+  } else if (!nameRegex.test(lName)) {
+    alert("Please Enter valid Last Name.");
 
     return false;
-  } else if (email == "" || !regEmail.test(email)) {
+  } else if (!nameRegex.test(username)) {
+    alert("Please Enter valid User Name.");
+
+    return false;
+  } else if (!regEmail.test(email)) {
     alert("Please enter valid Email.");
 
     return false;
-  } else if (age == "" || age.length > 3) {
-    alert("Please enter valid phone Number.");
+  } else if (age <= 0 && age >= 200) {
+    alert("Please enter valid Age.");
 
     return false;
-  } else if (contact.length < 10) {
-    alert("contact should be greather than 7 character");
+  } else if (!regPhone.test(contact)) {
+    alert("Contact should be 10 digits.");
 
     return false;
   } else if (m.has(email)) {
@@ -77,31 +77,12 @@ function storeAndShowuserData() {
     // console.log(m);
     userData.push(user);
 
-    // let dataDisplay = "";
+    document.getElementById("counter").innerHTML =
+      "Total Registerd user is : " + userCounter;
 
-    // for (let i = 0; i < userData.length; i++) {
-    //   dataDisplay += "<tr> <td>USER" + (i + 1) + "</td>";
-    //   dataDisplay += "<td>" + userData[i].fName + "</td>";
-    //   dataDisplay += "<td> " + userData[i].lName + "</td>";
-    //   dataDisplay += "<td> " + userData[i].username + "</td>";
-    //   dataDisplay += "<td> " + userData[i].email + "</td>";
-    //   dataDisplay += "<td> " + userData[i].age + "</td>";
-    //   dataDisplay += "<td> " + userData[i].contact + "</td>";
-    //   dataDisplay += "<td> " + userData[i].password + "</td></tr>";
-    // }
-    // document.getElementById("display").innerHTML = dataDisplay;
-    document.getElementById("counter").innerHTML ="Total Registerd user is : " + userCounter;
-      
-      
-      insert(user);
-      reset();
+    insert(user);
+    reset();
   }
-  // dataShow();
-  // console.log("mai bas check kr rhea ");
-
- 
-
- 
 
   function insert(user) {
     console.log("function insert start"),
@@ -128,7 +109,6 @@ function storeAndShowuserData() {
   // dataShow();
 }
 
-
 function reset() {
   document.getElementById("fName").value = "";
   document.getElementById("lName").value = "";
@@ -142,7 +122,7 @@ function hideSignIn() {
   document.getElementById("signindiv").style.display = "block";
 }
 // document.getElementById("showdata").addEventListener("click", dataShow);
-// data show api 
+// data show api
 function dataShow() {
   // $(document).ready(function () {
   $.ajax({
@@ -150,13 +130,30 @@ function dataShow() {
     type: "GET",
     success: function (result) {
       // console.log(result);
-      var tabledata ="";
-      for(i=0;i<result.length;i++){
+      var tabledata = "";
+      for (i = 0; i < result.length; i++) {
         var obj = result[i];
-        tabledata += "<tr><td>"+obj.userid+"</td><td>"+obj.fName+"</td><td>"+obj.lName+"</td><td>"+obj.username+"</td><td>"+obj.email+"</td><td>"+obj.age+"</td><td>"+obj.contact+"</td><td>"+obj.password+"</td></tr>";
+        tabledata +=
+          "<tr><td>" +
+          obj.userid +
+          "</td><td>" +
+          obj.fName +
+          "</td><td>" +
+          obj.lName +
+          "</td><td>" +
+          obj.username +
+          "</td><td>" +
+          obj.email +
+          "</td><td>" +
+          obj.age +
+          "</td><td>" +
+          obj.contact +
+          "</td><td>" +
+          obj.password +
+          "</td></tr>";
       }
-      document.getElementById("display").innerHTML = tabledata
-      console.log("test",result);
+      document.getElementById("display").innerHTML = tabledata;
+      console.log("test", result);
     },
     error: function (error) {
       console.log(error);
@@ -165,30 +162,29 @@ function dataShow() {
   // });
 }
 
-deleteUser = () =>{
-let id = document.getElementById("id").value;
-console.log("user Enterd"+id);
-userDelete(id);
-// console.log("user delete successfully....");
-}
+deleteUser = () => {
+  let id = document.getElementById("id").value;
+  console.log("user Enterd" + id);
+  userDelete(id);
+  // console.log("user delete successfully....");
+};
 function userDelete(id) {
   // $(document).ready(function () {
-   
+
   $.ajax({
-    url: 'http://localhost:5003/delete/'+id+'/',
+    url: "http://localhost:5003/delete/" + id + "/",
     type: "POST",
-    data:obj,
-    success: function (err,result) {
-      if(err){
+    data: obj,
+    success: function (err, result) {
+      if (err) {
         console.log(err);
-      }else{
+      } else {
         console.log(result);
       }
     },
     error: function (error) {
       console.log(error);
     },
-    
   });
   // });
   console.log("user delete successfully....");
@@ -213,44 +209,69 @@ function userDelete(id) {
 //   })
 // }
 
-function deleteApi(){
+function deleteApi() {
   //e.preventDefault();
-  const userId = parseInt(document.getElementById('deleteUserId').value);
+  const userId = parseInt(document.getElementById("deleteUserId").value);
 
   console.log(userId);
   const obj = {
-      userId
-  }
+    userId,
+  };
   $.ajax({
-      url: 'http://localhost:5003/deleteuser',
-      type: 'POST',
-      //dataType:"json",
-      data: obj,
-      
-      success: function(result){
-         console.log(result);
-      },
-      error: function(){
-          console.log('error');
-      }
+    url: "http://localhost:5003/deleteuser",
+    type: "POST",
+    //dataType:"json",
+    data: obj,
+
+    success: function (result) {
+      console.log(result);
+    },
+    error: function () {
+      console.log("error");
+    },
   });
 }
-
-
 function signIn() {
-  let userName = document.getElementById("signusername").value;
-  let contact = document.getElementById("signpassword").value;
-console.log(userName);
-console.log(contact);
-  let result = false;
-  for (let i = 0; i < userData.length; i++) {
-    if (userName == userData[i].username && contact == userData[i].contact) {
-      result = true;
-    }
-  }
-  if (result == true) {
-    alert("logged successfully");
-  } else {
-    alert("not valid");
-  }
+  //e.preventDefault();
+  const email = document.getElementById("signemail").value;
+  const password = document.getElementById("signpassword").value;
+  // console.log(email);
+  // console.log(password);
+  const cred = {
+    email,
+    password,
+  };
+  $.ajax({
+    url: "http://localhost:5003/signIn",
+    type: "POST",
+    data: cred,
+    success: function (result) {
+      // displayDetails(result);
+      console.log(result);
+      // console.log("loggedin successfully")
+    },
+    error: function (error) {
+      console.log(error);
+    },
+  });
+  document.getElementById("signemail").value = "";
+  document.getElementById("signpassword").value = "";
 }
+
+// function signIn() {
+//   let userName = document.getElementById("signusername").value;
+//   let contact = document.getElementById("signpassword").value;
+// console.log(userName);
+// console.log(contact);
+//   let result = false;
+//   for (let i = 0; i < userData.length; i++) {
+//     if (userName == userData[i].username && contact == userData[i].contact) {
+//       result = true;
+//     }
+//   }
+//   if (result == true) {
+//     alert("logged successfully");
+//   } else {
+//     alert("not valid");
+//   }
+// }
